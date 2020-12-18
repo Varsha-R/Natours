@@ -51,6 +51,7 @@ body {
     top: 40%;   /* wrt to the parent */
     left: 50%;
     transform: translate(-50%, -50%);   /* wrt the element itself */
+    text-align: center;
 }
 
 .heading-primary {
@@ -58,6 +59,7 @@ body {
     text-transform: uppercase;
 
     backface-visibility: hidden;    /* back part of element gets hidden; prevents shaking of element on animation */
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -113,4 +115,69 @@ body {
         opacity: 1;
         transform: translate(0);
     }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);   
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px; /* top-bottom left-right */
+    display: inline-block;  /* To get padding, heights, widths */
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px);    /* Y moving up - negative values */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);    /* X Y Blur Shadow */
+}
+
+.btn:active {
+    transform: translate(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);    /* X Y Blur Shadow */
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";    /* compulsory */
+    display: inline-block;  /* compulsory */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute; /* absolute positioning requires a reference element relative to which it positions */
+    top: 0;
+    left: 0;
+    z-index: -1; /* position of elements - one on top of another */
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: white;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);    /* increases size to double */
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards; /* It wil automatically apply the styles of 0% before animation starts */
 }
