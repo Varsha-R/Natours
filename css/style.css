@@ -161,7 +161,7 @@ body {
     height: 100%;
     width: 100%;
     border-radius: 100px;
-    position: absolute; /* absolute positioning requires a reference element relative to which it positions */
+    position: absolute; /* absolute positioning requires a reference element relative to which it positions (in this case - btn:link, visited) */
     top: 0;
     left: 0;
     z-index: -1; /* position of elements - one on top of another */
